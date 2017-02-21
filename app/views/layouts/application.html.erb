@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TodoList</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>TodoList</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="session">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <% if user_signed_in? %>
+        You logged in as <strong><%= current_user.email %></strong> 
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path %> or
+        <%= link_to 'Sign_Up', new_user_registration_path %>
+      <% end %>
+    </div>
+    <h1> TODO LIST </h1>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+    <div class="projects-list">
+      <%= link_to '<span class="glyphicon glyphicon-plus"><b> Add TODO List</b></span>'.html_safe, new_project_path, :class => "btn btn-primary", remote: true %>
+    </div>
+
+  </body>
 </html>
