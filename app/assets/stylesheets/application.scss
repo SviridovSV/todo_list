@@ -45,8 +45,31 @@ h1 {
     float: right;
     margin: 5px;
     padding-right: 5px;
-  }  
+  } 
 }
+.new-page {
+  text-align: center;
+
+  .input-name {
+    background-color: #337AB7;
+    width: 25%;
+    margin-left: 37%;
+    
+    .glyphicon {
+      color: black;
+      padding-left: 5px;
+      margin: 5px;
+      font-size: 17px;
+      padding-top: 3px;
+    }
+
+    .button-submit {
+      cursor: pointer;
+    }
+  }
+  
+} 
+
 
 
 
