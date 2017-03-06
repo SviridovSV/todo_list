@@ -1,14 +1,6 @@
 <div class="new-page">
-  <h1> Let's create a NEW PROJECT </h1>
-  <%= form_for @project, remote: true do |f| %>
-    <div class="input-name">
-      <span class="calendar-icon glyphicon glyphicon-calendar"></span>
-      <%= f.text_field :name %>
-      <span>
-        <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, projects_path, remote: true %> |
-        <span class="button-submit glyphicon glyphicon-ok"></span>
-      </span>
-    </div>
-  <% end %>
-  <%= link_to 'Back', projects_path %>
+  <div class="row">
+    <h1 class="col-md-12"> Let's create a NEW PROJECT </h1>
+    <%= render 'form', project: @project %>
+  </div>
 </div>

@@ -1,0 +1,7 @@
+<%= form_for project do |f| %>
+  <div class="row">
+    <%= f.text_field :name %>
+    <%= f.submit 'Save', class: "btn btn-primary" %>
+  </div>
+<% end %>
+<%= link_to 'Back', projects_path %>

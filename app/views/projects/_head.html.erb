@@ -1,12 +1,12 @@
 <table>
   <tr>
-    <td>
+    <td class='col-md-1'>
       <div class="glyphicon glyphicon-list-alt"></div>
     </td>
-    <td>
-      <%= @project.name %>
+    <td class='col-md-9'>
+      <%= project.name %>
     </td>
-    <td>
+    <td class='col-md-2'>
       <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, project, method: :delete, data: { confirm: "Are you sure?" } %>
       <%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_project_path(project) %>
     </td>

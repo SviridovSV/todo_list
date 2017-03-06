@@ -1,1 +1,16 @@
-<%= render 'projects' %>
+<div class="container">
+  <div class="row">
+  <% if @projects %>
+    <div class="index-page">
+      <% @projects.each do |project| %>
+        <%= render "head", project: project %>
+        <%= render "body", project: project %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="col-md-12">
+      <p> Please, create new project </p>
+    </div>
+  <% end %>
+</div>
+</div>

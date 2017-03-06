@@ -1,61 +1,43 @@
 class ProjectsController < ApplicationController
   before_action :set_project, except: [:index, :new, :create]
-  before_action :authenticate_user!, except: [:index]
+  
 
   def index
-    @projects ||= current_user.projects.order(id: :desc) 
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @projects = current_user.projects
   end
 
   def new
     @project = Project.new
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def create
-    @project = Project.create(project_params)
+    @project = Project.new(project_params)
     @project.user = current_user
-    respond_to do |format |
-      if @project.save
-        flash[:success] = 'Project was successfully created.'
-        format.js 
-      else
-        format.js { render :new }
-      end
+    if @project.save
+      flash[:success] = 'Project was successfully created.'
+      redirect_to root_url
+    else
+      render :new 
     end
   end
 
   def edit
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.'
+      flash[:success] = 'Project was successfully updated.'
+      redirect_to root_url 
     else
       render action: 'edit'
-    end
-    respond_to do |format|
-      format.html
-      format.js
     end
   end
 
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @projects = current_user.projects
+    flash[:success] = 'Project was successfully destroyed.'
+    redirect_to projects_url
   end
 
   private

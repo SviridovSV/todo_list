@@ -1,0 +1,20 @@
+<% project.tasks.each do |task| %>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <span><%= check_box_tag "done", true, task.status %></span>
+      <span class="badge">
+        <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, project_task_path(project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+      </span>
+      <span class="badge">
+        <%= link_to'<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_project_task_path(project, task) %>
+      </span>
+      <span class="badge">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </span>
+      <span class="badge">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </span>
+      <%= task.name %>
+    </li>
+  </ul>
+<% end %>

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   
   root to: 'projects#index'
 
-  resources :projects
+  resources :projects, except: [:show] do
+    resources :tasks, except: [:index, :show, :new]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
