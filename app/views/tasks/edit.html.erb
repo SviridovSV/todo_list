@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3"
+    <p>Let's edit the task with title: </p><%= @task.name %>
+    <br>
+    <%= form_for @task, edit_project_task_path do |f| %>
+      <div class="row">
+        <span>Enter new title </span>
+        <span>
+          <%= f.text_field :name %>
+          <%= f.submit 'Save', class: "btn btn-primary" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to 'Back', projects_path %> 
+</div>

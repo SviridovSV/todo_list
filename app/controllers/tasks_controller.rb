@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :current_project
+  before_action :current_task, only: [:edit]
 
   def create
     task = @project.tasks.new(task_params)
@@ -12,12 +13,17 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = @project.tasks.find(params[:id])
   end
 
   def update
     @task = current_task
-    @task.update(task_params)
+    if @task.update(task_params)
+      flash.now[:success] = 'Task was successfully updated.'
+      redirect_to projects_path
+    else
+      flash.now[:error] = 'Something went wrong.'
+      render 'edit'
+    end
   end
 
   def destroy
