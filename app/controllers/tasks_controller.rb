@@ -40,7 +40,7 @@ class TasksController < ApplicationController
 
   def current_task
     current_project
-    @project.tasks.find(params[:id])
+    @task = @project.tasks.find(params[:id])
   end
 
   def current_project
@@ -48,6 +48,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:project_id, :name)
+    params.require(:task).permit(:project_id, :name, :status)
   end
 end

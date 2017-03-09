@@ -1,7 +1,9 @@
 <% project.tasks.each do |task| %>
   <ul class="list-group">
     <li class="list-group-item">
-      <span><%= check_box_tag "done", true, task.status %></span>
+      <% if task.status == true %>
+        <span>glyphicon glyphicon-ok</span>
+      <% end %>
       <span class="badge">
         <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, project_task_path(project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
       </span>
