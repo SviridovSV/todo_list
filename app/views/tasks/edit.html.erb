@@ -7,10 +7,9 @@
         <span>Enter new title </span>
         <span>
           <% if @task.status == true %>
-            <%= f.check_box_tag :status, false, checked: true %>Status
-            <%= hidden_field_tag :status, true %>
+            <%= f.check_box :status, {checked: true}, "true", "false" %>Status
           <% else %>
-            <%= f.check_box_tag :status, true, checked: false %>Status
+            <%= f.check_box :status, {}, "true", "false" %>Status
           <% end %>
           <%= f.text_field :name %>
           <%= f.submit 'Save', class: "btn btn-primary" %>

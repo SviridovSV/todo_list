@@ -1,6 +1,8 @@
 class Task < ActiveRecord::Base
   
+  belongs_to :project
+  
   validates :name, :project_id, presence: true
   
-  belongs_to :project
+  
 end
