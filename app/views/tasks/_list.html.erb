@@ -1,4 +1,4 @@
-<% project.tasks.each do |task| %>
+<% project.tasks.order(priority: :desc).each do |task| %>
   <ul class="list-group">
     <li class="list-group-item">
       <% if task.status == true %>
@@ -11,7 +11,7 @@
         <%= link_to'<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_project_task_path(project, task) %>
       </span>
       <span class="badge">
-        <span class="glyphicon glyphicon-chevron-up"></span>
+        <%= link_to '<span class="glyphicon glyphicon-chevron-up"></span>'.html_safe, project_up_priority_path(project, task) %>
       </span>
       <span class="badge">
         <span class="glyphicon glyphicon-chevron-down"></span>

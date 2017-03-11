@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
   before_action :current_project
-  before_action :current_task, only: [:edit]
+  before_action :current_task, only: [:edit, :up_priority]
 
   def create
-    task = @project.tasks.new(task_params)
-    if task.save
+    @task = @project.tasks.new(task_params)
+    @task.set_priority
+    if @task.save
       flash.now[:success] = 'Task was successfully created.'
     else
       flash.now[:error] = 'Something went wrong.'
@@ -36,10 +37,14 @@ class TasksController < ApplicationController
     redirect_to projects_path
   end
 
+  def up_priority
+    @task.up_prior
+    redirect_to projects_path
+  end
+
   private
 
   def current_task
-    current_project
     @task = @project.tasks.find(params[:id])
   end
 
