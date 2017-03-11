@@ -9,11 +9,19 @@ class Task < ActiveRecord::Base
   end
 
   def up_prior
-    next_priority = self.priority - 1
     if self.priority != 1
-      task = Task.find_by(priority: next_priority)
+      task = Task.find_by(priority: self.priority - 1)
       task.update(priority: self.priority)
-      self.update(priority: next_priority)
+      self.update(priority: self.priority - 1)
+    end
+  end
+
+  def down_prior
+    count = project.tasks.count
+    if self.priority != Task.count
+      task = Task.find_by(priority: self.priority + 1)
+      task.update(priority: self.priority)
+      self.update(priority: self.priority + 1)
     end
   end
 end

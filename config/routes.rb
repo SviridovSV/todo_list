@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :projects, except: [:show] do
     resources :tasks, except: [:index, :show, :new]
     get 'tasks/:id/up_priority', to: 'tasks#up_priority', as: :up_priority
+    get 'tasks/:id/down_priority', to: 'tasks#down_priority', as: :down_priority
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

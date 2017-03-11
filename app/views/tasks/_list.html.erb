@@ -14,7 +14,7 @@
         <%= link_to '<span class="glyphicon glyphicon-chevron-up"></span>'.html_safe, project_up_priority_path(project, task) %>
       </span>
       <span class="badge">
-        <span class="glyphicon glyphicon-chevron-down"></span>
+        <%= link_to '<span class="glyphicon glyphicon-chevron-down"></span>'.html_safe, project_down_priority_path(project, task) %>
       </span>
       <%= task.name %>
     </li>

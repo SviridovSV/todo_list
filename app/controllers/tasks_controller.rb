@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :current_project
-  before_action :current_task, only: [:edit, :up_priority]
+  before_action :current_task, only: [:edit, :up_priority, :down_priority]
 
   def create
     @task = @project.tasks.create(task_params)
@@ -39,6 +39,11 @@ class TasksController < ApplicationController
 
   def up_priority
     @task.up_prior
+    redirect_to projects_path
+  end
+
+  def down_priority
+    @task.down_prior
     redirect_to projects_path
   end
 
