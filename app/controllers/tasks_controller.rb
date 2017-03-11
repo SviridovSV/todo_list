@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :current_task, only: [:edit, :up_priority]
 
   def create
-    @task = @project.tasks.new(task_params)
+    @task = @project.tasks.create(task_params)
     @task.set_priority
     if @task.save
       flash.now[:success] = 'Task was successfully created.'

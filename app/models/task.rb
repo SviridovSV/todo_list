@@ -11,7 +11,7 @@ class Task < ActiveRecord::Base
   def up_prior
     next_priority = self.priority - 1
     if self.priority != 1
-      task = Task.find(priority: next_priority)
+      task = Task.find_by(priority: next_priority)
       task.update(priority: self.priority)
       self.update(priority: next_priority)
     end

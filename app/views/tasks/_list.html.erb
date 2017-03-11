@@ -1,4 +1,4 @@
-<% project.tasks.order(priority: :desc).each do |task| %>
+<% project.tasks.order(priority: :asc).each do |task| %>
   <ul class="list-group">
     <li class="list-group-item">
       <% if task.status == true %>
