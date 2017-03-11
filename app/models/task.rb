@@ -24,4 +24,12 @@ class Task < ActiveRecord::Base
       self.update(priority: self.priority + 1)
     end
   end
+
+  def update_priority
+    new_priority = 1
+    Task.order(:priority).each do |task|
+      task.update(priority: new_priority)
+      new_priority += 1
+    end
+  end
 end

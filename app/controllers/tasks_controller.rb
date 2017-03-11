@@ -30,6 +30,7 @@ class TasksController < ApplicationController
   def destroy
     @task = current_task
     if @task.destroy
+      @task.update_priority
       flash.now[:success] = 'Task was successfully destroied.'
     else
       flash.now[:error] = 'Something went wrong.'
