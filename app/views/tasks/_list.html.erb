@@ -1,5 +1,5 @@
 <% project.tasks.order(priority: :asc).each do |task| %>
-  <ul class="list-group">
+  <ul class="list-group col-md-10">
     <li class="list-group-item">
       <% if task.status == true %>
         <span class="glyphicon glyphicon-ok"></span>
@@ -16,7 +16,10 @@
       <span class="badge">
         <%= link_to '<span class="glyphicon glyphicon-chevron-down"></span>'.html_safe, project_down_priority_path(project, task) %>
       </span>
-      <%= task.name %>
+      <%= task.name%>
     </li>
+    <% if task.deadline %>
+      Deadline for this task is <%= exceeded_task (task) %>
+    <% end %>
   </ul>
 <% end %>
