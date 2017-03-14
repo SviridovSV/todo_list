@@ -1,6 +1,6 @@
-<form class="form-horizontal" role="form">
+
   <p>Let's edit the task with title: </p><%= @task.name %>
-  <%= form_for [@project, @task] do |f| %>
+  <%= form_for [@project, @task], class: "form-horizontal" do |f| %>
     <div class="form-group">
       <label class="col-sm-2 control-label">Enter new title for task</label>
       <div class="col-sm-10">
@@ -21,13 +21,13 @@
           <%= f.check_box :status, {}, "true", "false" %>Mark if this task is done
         <% end %>
       </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <%= f.submit 'Save', class: "btn btn-primary" %>
-          <%= link_to 'Back'.html_safe, projects_path, class: "btn btn-primary" %> 
-        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit 'Save', class: "btn btn-primary" %>
+        <%= link_to 'Back'.html_safe, projects_path, class: "btn btn-primary" %> 
       </div>
-    <% end %>
+    </div>
+  <% end %>
 
   
-</form>
