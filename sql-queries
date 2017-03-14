@@ -1,0 +1,11 @@
+tasks (id, name, status, project_id)
+projects (id, name)
+
+1. get all statuses, not repeating, alphabetically ordered
+SELECT DISTINCT status FROM tasks ORDER BY status ASC
+
+2. get the count of all tasks in each project, order by tasks count descending
+SELECT COUNT(id) FROM tasks GROUP BY project_id ORDER BY COUNT(id) DESC
+
+3. get the count of all tasks in each project, order by projects names
+SELECT COUNT(id) FROM tasks GROUP BY project_id
