@@ -16,10 +16,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+* {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background-image: url('http://ipic.su/img/img7/fs/background.1455029097.png');
   background-attachment: fixed;
+  height: 100%;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
 }
 
 h1 {
@@ -31,7 +41,77 @@ h1 {
   padding-right: 10px;
 }
 
-.projects-list {
+.container {
+  padding-bottom: 60px;
+}
+
+.index-page {
+  .table {
+    li {
+      list-style-type: none;
+    }
+    td {
+      height: 10px;
+      vertical-align: middle;
+      text-align: center;
+      padding: 0px;
+    }
+    .task-name {
+      width: 60%; 
+      text-align: left;
+      padding-left: 10px;
+    }
+    #hide {
+      .glyphicon {
+        color: white;
+      }
+    }
+  }
+  tr:hover {
+    #hide {
+      .glyphicon {
+        color: grey;
+      }
+    }
+  }
+}
+
+.project-head {
+  table {
+    vertical-align: center;
+    margin: 0;
+
+    .glyphicon {
+      margin: 0px;
+      font-size: 17px;
+      padding: 5px 10px 5px 5px;
+    }
+
+    p {
+      color: white;
+      text-align: left;
+      font-size: 17px;
+      .glyphicon {
+        color: black;
+      }
+    }
+  }
+}
+
+.project-head:hover {
+  .glyphicons {
+    .glyphicon {
+      color: white;
+    }
+  }
+}
+
+.panel-body {
+  background-color: #eee;
+  padding: 5px;
+}
+
+.projects-create {
   text-align: center;
 
   .glyphicon {
@@ -48,6 +128,7 @@ h1 {
     padding-right: 5px;
   } 
 }
+
 .new-page {
   text-align: center;
 
@@ -71,6 +152,15 @@ h1 {
   
 } 
 
-
+.footer {
+  hight: 30px;
+  margin-top: -10px;
+  padding: 5px;
+  color: #ffffff;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 
 

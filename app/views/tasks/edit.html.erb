@@ -1,23 +1,33 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3"
-    <p>Let's edit the task with title: </p><%= @task.name %>
-    <br>
-    <%= form_for [@project, @task] do |f| %>
-      <div class="row">
-        <span>Enter new title </span>
-        <span>
-          <%= f.text_field :name %><br>
-          <% if @task.status == true %>
-            <%= f.check_box :status, {checked: true}, "true", "false" %>Status
-          <% else %>
-            <%= f.check_box :status, {}, "true", "false" %>Status
-          <% end %><br>
-          <%= f.label :deadline %>
-          <%= f.date_select :deadline %><br>
+<form class="form-horizontal" role="form">
+  <p>Let's edit the task with title: </p><%= @task.name %>
+  <%= form_for [@project, @task] do |f| %>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Enter new title for task</label>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Choose deadline for this task</label>
+      <div class="col-sm-10">
+        <%= f.date_select :deadline, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <% if @task.status == true %>
+          <%= f.check_box :status, {checked: true}, "true", "false" %>Mark if this task is done
+        <% else %>
+          <%= f.check_box :status, {}, "true", "false" %>Mark if this task is done
+        <% end %>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
           <%= f.submit 'Save', class: "btn btn-primary" %>
-        </span>
+          <%= link_to 'Back'.html_safe, projects_path, class: "btn btn-primary" %> 
+        </div>
       </div>
     <% end %>
-  </div>
-  <%= link_to 'Back', projects_path %> 
-</div>
+
+  
+</form>

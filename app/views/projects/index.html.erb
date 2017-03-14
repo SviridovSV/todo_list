@@ -1,16 +1,24 @@
-<div class="container">
-  <div class="row">
+<div class="index-page row">
   <% if @projects %>
-    <div class="index-page">
-      <% @projects.each do |project| %>
-        <%= render "head", project: project %>
-        <%= render "body", project: project %>
-      <% end %>
-    </div>
+    <% @projects.each do |project| %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <%= render "head", project: project %>
+        </div>
+        <div class="panel-body">
+          <%= render "body", project: project %>
+        </div>
+        <% if project.tasks %>
+          <table class="table table-bordered table-hover">
+            <%= render 'tasks/list', project: project %>
+          </table>
+        <% end %>
+      </div>
+    <% end %>
+    <%= will_paginate @projects %>
   <% else %>
     <div class="col-md-12">
       <p> Please, create new project </p>
     </div>
   <% end %>
-</div>
 </div>

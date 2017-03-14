@@ -1,25 +1,29 @@
 <% project.tasks.order(priority: :asc).each do |task| %>
-  <ul class="list-group col-md-10">
-    <li class="list-group-item">
+  <tr> 
+    <td style="width: 5%;">
       <% if task.status == true %>
         <span class="glyphicon glyphicon-ok"></span>
       <% end %>
-      <span class="badge">
-        <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, project_task_path(project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
-      </span>
-      <span class="badge">
-        <%= link_to'<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_project_task_path(project, task) %>
-      </span>
-      <span class="badge">
-        <%= link_to '<span class="glyphicon glyphicon-chevron-up"></span>'.html_safe, project_up_priority_path(project, task) %>
-      </span>
-      <span class="badge">
-        <%= link_to '<span class="glyphicon glyphicon-chevron-down"></span>'.html_safe, project_down_priority_path(project, task) %>
-      </span>
+    </td>
+    <td class="task-name">
       <%= task.name%>
-    </li>
-    <% if task.deadline %>
-      Deadline for this task is <%= exceeded_task (task) %>
-    <% end %>
-  </ul>
+    </td>
+    <td id="hide" style="width: 5%;">
+      <ul>
+        <li><%= link_to '<span class="glyphicon glyphicon-chevron-up"></span>'.html_safe, project_up_priority_path(project, task) %></li>
+        <li><%= link_to '<span class="glyphicon glyphicon-chevron-down"></span>'.html_safe, project_down_priority_path(project, task) %></li>
+      </ul>
+    </td>
+    <td id="hide" style="width: 5%;">
+      <%= link_to'<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_project_task_path(project, task) %>
+    </td>
+    <td id="hide" style="width: 5%;">
+      <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, project_task_path(project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+    </td>
+    <td style="width: 20%;">
+      <% if task.deadline %>
+        Deadline for this task is <%= exceeded_task (task) %>
+      <% end %>
+    </td>
+  </tr>
 <% end %>

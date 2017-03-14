@@ -1,14 +1,14 @@
-<table>
-  <tr>
-    <td class='col-md-1'>
-      <div class="glyphicon glyphicon-list-alt"></div>
-    </td>
-    <td class='col-md-9'>
-      <%= project.name %>
-    </td>
-    <td class='col-md-2'>
-      <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, project, method: :delete, data: { confirm: "Are you sure?" } %>
-      <%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_project_path(project) %>
-    </td>
-  </tr>
-</table>
+<div class="project-head row">  
+  <table width="100%">
+    <tr>
+      <td class='col-md-9'>
+        <p><span class="glyphicon glyphicon-list-alt" ></span><%= project.name %></p>
+      </td>
+      <td class='glyphicons col-md-1' text-align="right">
+        <%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_project_path(project) %>
+        |
+        <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, project, method: :delete, data: { confirm: "Are you sure?" } %>
+      </td>
+    </tr>
+  </table>
+</div>

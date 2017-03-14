@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
+gem 'will_paginate'
 
 
 # Use ActiveModel has_secure_password

@@ -1,18 +1,13 @@
-<div class="row">
+<div class="create-task row">
   <%= form_for [project, Task.new] do |f| %>
-    <div class='col-md-10'>
+    <div class='col-md-12'>
       <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
         <%= f.text_field :name, class: "form-control", placeholder: "Start typing here to create a task..."%>
+        <span class="input-group-btn">
+         <%= f.submit "Add TASK", class: "btn btn-success btn-block" %>
+        </span>
       </div>
-    </div>
-    <div class='col-md-2'>
-      <%= f.submit "Add TASK", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
-<% if project.tasks %>
-  <div class="row">
-    <%= render 'tasks/list', project: project %>
-  </div>
-<% end %>
