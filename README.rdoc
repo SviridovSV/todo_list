@@ -1,28 +1,36 @@
-== README
+https://mysterious-caverns-25932.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+tasks (id, name, status, project_id)
+projects (id, name)
 
-Things you may want to cover:
+1. get all statuses, not repeating, alphabetically ordered
 
-* Ruby version
+SELECT DISTINCT status FROM tasks ORDER BY status; 
 
-* System dependencies
+2. get the count of all tasks in each project, order by tasks count descending
 
-* Configuration
+SELECT COUNT(id) FROM tasks GROUP BY project_id ORDER BY COUNT(id) DESC;
 
-* Database creation
+3. get the count of all tasks in each project, order by projects names
 
-* Database initialization
+SELECT projects.name, COUNT(tasks.id) FROM projects LEFT JOIN tasks ON projects.id = tasks.project_id GROUP BY projects.id ORDER BY projects.name;
 
-* How to run the test suite
+4. get the tasks for all projects having the name beginning with “N” letter
 
-* Services (job queues, cache servers, search engines, etc.)
+SELECT tasks.* FROM tasks JOIN projects ON tasks.project_id = projects.id WHERE projects.name LIKE 'N%';
 
-* Deployment instructions
+5. get the list of all projects containing the ‘a’ letter in the middle of the name, and show the tasks count near each project. Mention that there can exist projects without tasks and tasks with project_id=NULL
 
-* ...
+SELECT projects.name, COUNT(tasks.id) AS tasks_count FROM tasks RIGHT JOIN project ON project.id = tasks.project_id WHERE project.name LIKE '%a%' GROUP BY tasks.id;
 
+6. get the list of tasks with duplicate names. Order alphabetically
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+SELECT name FROM tasks WHERE name IN (SELECT name FROM tasks HAVING COUNT(*) > 1) ORDER BY name;
+
+7. get the list of tasks having several exact matches of both name and status, from the project ‘Garage’. Order by matches count
+
+SELECT tasks.name FROM tasks INNER JOIN projects ON tasks.projects_id = projects.id WHERE projects.name = 'Garage' GROUP BY tasks.name, tasks.status HAVING COUNT(tasks) > 1 ORDER BY COUNT(tasks);
+
+8. get the list of project names having more than 10 tasks in status ‘completed’. Order by project_id
+
+SELECT name FROM project RIGHT JOIN tasks ON project.id = tasks.project_id WHERE tasks.status = 'completed' GROUP BY project.id HAVING COUNT(tasks.project_id) > 10 ORDER BY project.id;
